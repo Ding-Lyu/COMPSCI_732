@@ -1,17 +1,23 @@
 import React, {Component} from 'react'
 import {Button} from 'antd'
-import {HashRouter,Route,Link} from 'react-router-dom'
+import {HashRouter,Route,Link,Switch, Redirect} from 'react-router-dom'
 import './App.css';
 //Import Ant Design layout 
 import { Layout, Menu} from 'antd';
+//Import router guard
+import RouterGuard from './RouterGuard/RouterGuard'
 
-//import router components
+//import router page components
 import Home from './components/home'
 import About from './components/about'
 import Movie from './components/movie'
-
+import LoginMain from './login_regist/loginMain'
+import NotFound from './components/NotFound'
+import DrawerForm from './login_regist/regist'
+//define antd layout component
 const { Header, Content, Footer } = Layout;
-// import styles from './css/app.scss'
+
+
 
 export default class App extends Component {
     constructor(props){
@@ -34,15 +40,22 @@ export default class App extends Component {
                 <Menu.Item key="about" style = {{backgroundColor:'#202020'}}>
                   <Link to = "/about">About</Link>
                 </Menu.Item>
-                <Button type="link" style={{float:'right',marginTop:'10px',color:'white'}}>Login</Button>
-                <Button type="link" style={{float:'right',marginTop:'10px',color:'white'}}>Sign up</Button>
+                <Link to = "/login"><Button type="primary" style={{float:'right',marginTop:'10px',color:'white'}}>Login</Button></Link>
+                {/* <Button type="link" style={{float:'right',marginTop:'10px',color:'white'}}>Sign up</Button> */}
+                <DrawerForm></DrawerForm>
              </Menu>
           </Header>
-         <Content style={{ padding: '0 50px',backgroundColor:'white' }}>
+         <Content style={{ padding: '0 50px',backgroundColor:'white',	width:'100%' }}>
            <div className="site-layout-content">
+           {/*config router which only match one page by using Switch */}
+           <Switch>
            <Route path = "/home" component = {Home}></Route>
-           <Route path = "/about" component = {About}></Route>
+           <RouterGuard path = "/about" component = {About}></RouterGuard>
            <Route path = "/movie" component = {Movie}></Route>
+           <Route path = "/login" component = {LoginMain}></Route>
+           {/* 404page */}
+           <Route component = {NotFound}></Route>
+           </Switch>
            </div>
          </Content>
     <Footer style={{ textAlign: 'center' }}>Video streaming interface</Footer>
