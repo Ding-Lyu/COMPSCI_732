@@ -11,9 +11,12 @@ import RouterGuard from './RouterGuard/RouterGuard'
 import Home from './components/home'
 import About from './components/about'
 import Movie from './components/movie'
-import LoginMain from './login_regist/loginMain'
 import NotFound from './components/NotFound'
-import DrawerForm from './login_regist/regist'
+import RegistDrawerForm from './login_regist/regist'
+import LoginMain from './login_regist/loginMain'
+import TestMovie from './components/TestMovie'
+import Series from './components/Series'
+// import LoginDrawerForm from './login_regist/loginMain'
 //define antd layout component
 const { Header, Content, Footer } = Layout;
 
@@ -35,14 +38,19 @@ export default class App extends Component {
                   <Link to = "/home">Home</Link>
                 </Menu.Item>
                 <Menu.Item key="movie" style = {{backgroundColor:'#202020'}}>
-                  <Link to = "/movie">Movie</Link>
+                  <Link to= "/movie">Movie</Link>
+                </Menu.Item>
+                <Menu.Item key="series" style = {{backgroundColor:'#202020'}}>
+                  <Link to= "/series/new/1">Series</Link>
                 </Menu.Item>
                 <Menu.Item key="about" style = {{backgroundColor:'#202020'}}>
                   <Link to = "/about">About</Link>
                 </Menu.Item>
                 <Link to = "/login"><Button type="primary" style={{float:'right',marginTop:'10px',color:'white'}}>Login</Button></Link>
                 {/* <Button type="link" style={{float:'right',marginTop:'10px',color:'white'}}>Sign up</Button> */}
-                <DrawerForm></DrawerForm>
+                {/* <LoginDrawerForm></LoginDrawerForm> */}
+                <RegistDrawerForm></RegistDrawerForm>
+                {/* <LoginDrawerForm></LoginDrawerForm> */}
              </Menu>
           </Header>
          <Content style={{ padding: '0 50px',backgroundColor:'white',	width:'100%' }}>
@@ -51,14 +59,16 @@ export default class App extends Component {
            <Switch>
            <Route path = "/home" component = {Home}></Route>
            <RouterGuard path = "/about" component = {About}></RouterGuard>
-           <Route path = "/movie" component = {Movie}></Route>
+           {/* <Route path = "/about" component = {About}></Route> */}
+           <Route path = "/movie" component = {TestMovie}></Route>
+           <Route path = "/series" component = {Series}></Route>
            <Route path = "/login" component = {LoginMain}></Route>
            {/* 404page */}
            <Route component = {NotFound}></Route>
            </Switch>
            </div>
          </Content>
-    <Footer style={{ textAlign: 'center' }}>Video streaming interface</Footer>
+    {/* <Footer style={{ textAlign: 'center',backgroundColor:'white' }}>Video streaming interface</Footer> */}
   </Layout>
 );
             </HashRouter>
