@@ -7,15 +7,15 @@ require("dotenv").config();
 // routes
 const userRouter = require("./router/user.routes");
 const favoriteRouters = require("./router/favorite.routes");
+const movieRouters = require("./router/movie.routes");
 
 const PORT = process.env.PORT || 5000;
 
 const CONNECTION_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@dinglyu.nw1fm.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const app = express();
-app.use(express.static(path.join(__dirname, "public", "build")));
-
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, "public", "build")));
 
 // body parsing
 app.use(express.json());
@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 // Routes
 app.use(userRouter);
 app.use("/favorite", favoriteRouters);
+app.use("/movie", movieRouters);
 
 app.use("/*", (req, res, next) => {
   res
@@ -35,6 +36,8 @@ app.use("/*", (req, res, next) => {
 app.use((err, req, res, next) => {
   const message = err.message || "Server Error",
     status = err.status || 500;
+
+  console.log(err);
 
   console.log(`Status: ${status} \nMessage: ${message}`);
   console.log(`URL: ${req.url} METHOD: ${req.method}`);

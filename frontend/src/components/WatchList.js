@@ -2,6 +2,8 @@ import { Button } from "antd";
 import axios from "axios";
 import React, { Component } from "react";
 
+import TestMovieList from "./TestMovieList";
+
 export default class WatchList extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +31,13 @@ export default class WatchList extends Component {
   };
 
   render() {
+    return (
+      <TestMovieList
+        movies={this.state.movies}
+        getMovies={this.getData}
+        isAuth={this.props.isAuth}
+      />
+    );
     return (
       <div>
         <h1>Your Watch List</h1>

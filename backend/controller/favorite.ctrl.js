@@ -1,15 +1,25 @@
-const { validationResult } = require("express-validator");
 const Favorite = require("../model/Favorite");
 
-exports.index = async (req, res, next) => {
+exports.getMovieList = async (req, res, next) => {
   try {
-    const movies = await Favorite.find({ userId: req.userId }).sort({
+    const favorites = await Favorite.find({ userId: req.userId }).sort({
       createdAt: -1,
     });
     return res.status(200).json({
       status: 200,
       message: "Get all favorite movies successfully!",
-      data: { movies },
+      data: {
+        movies: favorites.map((fav) => ({
+          ...fav._doc,
+          _id: fav.movieId,
+          favId: fav._id,
+          Title: fav.title,
+          Year: fav.year,
+          imdbID: fav.imdbID,
+          Type: fav.type,
+          Poster: fav.poster,
+        })),
+      },
     });
   } catch (error) {
     return next(error);
@@ -18,17 +28,6 @@ exports.index = async (req, res, next) => {
 
 exports.store = async (req, res, next) => {
   try {
-    const validatedData = validationResult(req);
-    if (!validatedData.isEmpty()) {
-      const err = new Error("Validation Fail");
-      err.status = 422;
-      err.errors = validatedData.errors.map((error) => ({
-        message: error.msg,
-        name: error.param,
-      }));
-      throw err;
-    }
-
     const reqBody = req.body;
 
     const favoriteItem = await Favorite.create({
@@ -38,6 +37,7 @@ exports.store = async (req, res, next) => {
       type: reqBody.type,
       year: reqBody.year,
       imdbID: reqBody.imdbID,
+      movieId: reqBody.movieId,
     });
 
     return res.status(200).json({
@@ -52,9 +52,11 @@ exports.store = async (req, res, next) => {
 
 exports.destroy = async (req, res, next) => {
   try {
-    const isAuthorize = await Favorite.findByIdAndDelete(
-      req.params.favoriteId
-    ).where("userId", req.userId);
+    // console.log(req.params.favoriteId, req.userId);
+    const isAuthorize = await Favorite.findOneAndDelete({
+      userId: req.userId,
+      movieId: req.params.movieId,
+    });
 
     if (!isAuthorize) {
       const err = new Error("Action Forbidden.");

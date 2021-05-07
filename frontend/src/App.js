@@ -137,13 +137,17 @@ export default class App extends Component {
                 {/* <RouterGuard path="/about" component={About}></RouterGuard> */}
                 {/* <Route path="/about" component={About}></Route> */}
                 {this.state.isAuth ? (
-                  <Route path="/watch-list" component={WatchList}></Route>
+                  <Route path="/watch-list">
+                    <WatchList isAuth={this.state.isAuth} />
+                  </Route>
                 ) : (
                   <Route path="/login">
                     <LoginMain setAuth={this.handleSetIsAuth} />
                   </Route>
                 )}
-                <Route path="/movie" component={TestMovie}></Route>
+                <Route path="/movie">
+                  <TestMovie isAuth={this.state.isAuth} />
+                </Route>
                 <Route path="/series" component={Series}></Route>
                 {/* 404page */}
                 <Redirect to="/home" />

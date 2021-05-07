@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "antd";
+import { Row } from "antd";
 import axios from "axios";
+import MovieThumbnail from "./MovieThumbnail";
 
-const TestMovieList = (props) => {
+const MovieList = (props) => {
   const [wishList, setWishList] = useState([]);
   const [showButton, setShowButton] = useState(false);
 
@@ -14,6 +15,12 @@ const TestMovieList = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!props.isAuth) {
+      setShowButton(false);
+    }
+  }, [props.isAuth]);
+
   const getData = () => {
     axios
       .get("/favorite")
@@ -21,49 +28,24 @@ const TestMovieList = (props) => {
       .catch((error) => console.log(error));
   };
 
-  const addIntoList = (movie) => {
-    axios
-      .post("/favorite", {
-        poster: movie.Poster,
-        title: movie.Title,
-        type: movie.Type,
-        year: movie.Year,
-        imdbID: movie.imdbID,
-      })
-      .then(({ data }) => getData())
-      .catch((err) => console.log(err));
-  };
-
-  const removeFromList = (movie) => {
-    axios
-      .delete("/favorite/" + movie._id)
-      .then(({ data }) => getData())
-      .catch((error) => console.log(error));
-  };
-
   return (
-    <>
+    <Row>
       {props.movies.map((movie, index) => {
         const i = wishList.findIndex((item) => item.imdbID === movie.imdbID);
         const isInList = i === -1 ? false : true;
         return (
-          <div className="movie-poster">
-            <img src={movie.Poster} alt="movie"></img>
-            {showButton && (
-              <Button
-                onClick={() =>
-                  isInList ? removeFromList(movie) : addIntoList(movie)
-                }
-                type="primary"
-              >
-                {isInList ? "Remove" : "Add"}
-              </Button>
-            )}
-          </div>
+          <MovieThumbnail
+            key={index}
+            getData={getData}
+            isInList={isInList}
+            movie={movie}
+            showButton={showButton}
+            turnOffCommenting={props.turnOffCommenting}
+          />
         );
       })}
-    </>
+    </Row>
   );
 };
 
-export default TestMovieList;
+export default MovieList;

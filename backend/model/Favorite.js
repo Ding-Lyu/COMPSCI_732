@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const WishListSchema = new Schema(
   {
     userId: { type: mongoose.Types.ObjectId, ref: "User", required: true },
+    movieId: { type: mongoose.Types.ObjectId, ref: "Movie", required: true },
     poster: { type: String, require: true },
     title: { type: String, require: true },
     type: { type: String, require: true },
@@ -16,4 +17,4 @@ const WishListSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("WishList", WishListSchema);
+module.exports = mongoose.model("Favorite", WishListSchema);

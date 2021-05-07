@@ -29,9 +29,9 @@
 //     }
 
 // }
-import React, { useState, useEffect } from "react";
-import { fetchMovies } from "../service/index";
-import RBCarousel from "react-bootstrap-carousel";
+import React from "react";
+
+import HomeImage from "../img/home.jpg";
 
 export default function Home() {
   // const [nowPlaying, setNowPlaying] = useState([]);
@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <div>
       <img
-        src="https://images.hdqwalls.com/wallpapers/the-suicide-squad-team-5k-g4.jpg"
+        src={HomeImage}
         alt="poster"
         style={{ width: "100%", height: "80vh", marginTop: 20 }}
       />
