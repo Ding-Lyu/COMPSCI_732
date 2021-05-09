@@ -40,7 +40,7 @@ export default function Login(props) {
   //Button and Checkbox layout setup
   const tailLayout = {
     wrapperCol: {
-      offset: 10,
+      offset: 3,
       span: 16,
     },
   };
