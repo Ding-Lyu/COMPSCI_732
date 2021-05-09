@@ -16,7 +16,7 @@ Now you’re ready to go!
 
 As we described in the proposal. we are aiming to developing a video streaming service interface.  Our design should have the following features. 
 
-Must-have	1.	Login/logout features	17/4/2021
+Must-have	1.      Login/logout features	17/4/2021
 	        2.	Menu bar/search bar	17/4/2021
 	        3.	google/videos API	24/4/2021
 
