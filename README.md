@@ -45,7 +45,7 @@ After a week, each member have started their own assigned tasks. In this week, E
 In this week, both frontend and backend have been built and we meet some problems of the copyright of film resources. In this meeting we discuss about how to fix the problem and we end up changing our plan and would do more about user interation such as comments. Adding comments is our should-have feature which is also our backup plan. 
 
 - May 3rd - May 9th:
-Our project have come to the end. We have a meeting to discuss merging our source code together and push to main branch in github. 
+Our project have come to the end. We have a meeting to discuss UI and Search bar. 
 
 
 The version in main does not include the search bar function, and the latest version has not been tested due to time issues, so we cannot take a risk of having bug by merging it into main. We recommend downloading and viewing our latest version in ENYULIU Brunch as well
