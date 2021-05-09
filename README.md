@@ -48,3 +48,5 @@ In this week, both frontend and backend have been built and we meet some problem
 Our project have come to the end. We have a meeting to discuss merging our source code together and push to main branch in github. 
 
 
+The version in main does not include the search bar function, and the latest version has not been tested due to time issues, so we cannot take a risk of having bug by merging it into main. We recommend downloading and viewing our latest version in ENYULIU Brunch
+
