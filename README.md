@@ -31,3 +31,7 @@ The second part:  users can comment on the movie.
 
 The third part: users are able to search to see what movies are available
 
+Weekly regular meeting notes:
+
+
+
