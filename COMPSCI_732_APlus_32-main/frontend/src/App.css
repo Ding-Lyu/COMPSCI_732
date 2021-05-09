@@ -1,0 +1,91 @@
+.site-layout-content {
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  margin: 16px 0 16px 24px;
+}
+.layout {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
+body {
+  height: auto;
+}
+
+.watch-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.movie__details {
+  margin-top: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.movie__details-bottom {
+  padding-right: 0;
+  padding-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* .movie__details-bottom > button {
+  border: none;
+  outline: none;
+  background-color: #202020;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 2px 20px 4px 20px;
+} */
+
+.movie__details > h2 {
+  font-size: 20px;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+}
+
+.movie-poster {
+  margin: 20px;
+}
+
+.movie-poster > img {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.modal__footer {
+  margin-top: 10px;
+}
+
+.modal__footer-button {
+  margin-top: 5px;
+}
+
+.comment {
+  margin: 5px 0;
+  border-bottom: 1px solid #a1a1a1;
+  line-height: 1.1;
+}

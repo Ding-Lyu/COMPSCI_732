@@ -1,0 +1,7 @@
+.movie-layout >  .row{
+    overflow-x: auto;
+     /* flex-wrap: nowrap; */
+}
+.movie-poster{
+    margin: 20px;
+}
