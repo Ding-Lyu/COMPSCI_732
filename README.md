@@ -50,3 +50,5 @@ Our project have come to the end. We have a meeting to discuss UI and Search bar
 
 The version in main does not include the search bar function, and the latest version has not been tested due to time issues, so we cannot take a risk of having bug by merging it into main. We recommend downloading and viewing our latest version in ENYULIU Brunch as well
 
+<b>Register:(Just to remind)</b>
+To register a new account, the website is required for a special character in your password. The special character has to be '@'.
