@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Login from "./Login";
-import imgURL from "../img/logo.png";
+
 import axios from "axios";
 
 export default class LoginMain extends Component {
@@ -24,9 +24,6 @@ export default class LoginMain extends Component {
   render() {
     return (
       <div className="login-home">
-        <center>
-          <img style={{ width: "30%", marginTop: "50px" }} src={imgURL} />
-        </center>
         <center>
           <Login setAuth={this.props.setAuth}></Login>
         </center>
